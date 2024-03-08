@@ -1,0 +1,22 @@
+<%= form_with model: board, local: true, class: "space-y-12 divide-y divide-gray-200" do |f|%>
+  <div class="space-y-8">
+    <div class="border-b border-gray-900/10 py-12">
+      <% if board.new_record? %>
+        <h2 class=" text-xl font-semibold leading-7 text-gray-900">New Board</h2>
+        <p class="mt-1 text-sm leading-6 text-gray-600">This form is to create a new board!</p>
+      <% else %>
+        <h2 class=" text-xl font-semibold leading-7 text-gray-900">Edit Board</h2>
+        <p class="mt-1 text-sm leading-6 text-gray-600">This form is to edit a board!</p>
+      <% end %>
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="col-span-full">
+          <%= f.label :name, class: "block text-sm font-medium text-gray-700"%>
+          <div class="mt-2">
+            <%= f.text_field :name, class: "block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 sm:text-sm"%>
+          </div>
+          <div class="mt-6 flex items-center justify-end gap-x-6">
+            <%= link_to "Cancel", root_path, class: "text-sm font-semibold leading-6 text-gray-900 rounded-md" %>
+            <%= f.submit board.new_record? ? "Create Board" : "Update Board", class:"cursor-pointer rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+          </div>
+        </div>
+      <% end %>
